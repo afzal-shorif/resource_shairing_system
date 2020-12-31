@@ -50,3 +50,5 @@ Route::get('/register/{user_type}', 'App\Http\Controllers\Authorization@register
 Route::post('/check_login', 'App\Http\Controllers\Authorization@check_login');
 Route::post('/register_teacher', 'App\Http\Controllers\Authorization@register_teacher');
 Route::post('/register_student', 'App\Http\Controllers\Authorization@register_student');
+
+Route::get('/user_select', 'App\Http\Controllers\Authorization@user_select');

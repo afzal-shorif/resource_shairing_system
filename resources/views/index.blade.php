@@ -43,7 +43,7 @@
                     </form>
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Log In</a>
+                            <a class="nav-link" href="{{url('/user_select')}}">Log In</a>
                         </li>
                     </ul>
                 </div>

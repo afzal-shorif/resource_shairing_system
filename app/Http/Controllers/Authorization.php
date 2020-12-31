@@ -209,4 +209,7 @@ class Authorization extends Controller
         return view('index', ['title'=> "School Resource"]);
     }
 
+    public function user_select(){
+        return view('login_select', ['title'=> "School Resource :: Select User"]);
+    }
 }
