@@ -92,7 +92,8 @@ class Home extends Controller
 
     public function cart(){
         $data = Prime_model::get_cart_item();
-        return view('cart',['title'=>'Cart','data'=>$data]);
+        $class = Prime_model::get_class();
+        return view('cart',['title'=>'Cart','data'=>$data, 'class'=>$class]);
     }
 
 

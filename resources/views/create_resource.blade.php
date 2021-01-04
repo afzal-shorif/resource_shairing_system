@@ -1,5 +1,5 @@
 @include('layout/user_header')
-
+<div class="container">
     <div class="row row_header" >
         <div class="col"><h5>Add Resource :</h5></div>
     </div>
@@ -186,5 +186,5 @@
             </form>
         </div>
     </div>
-
+</div>
 @include('layout/footer')

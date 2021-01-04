@@ -12,7 +12,8 @@ use DB;
 class Prime_model extends Model
 {
     use HasFactory;
-
+    protected $table = 'resource';
+    protected $dateFormat = 'U';
     /**
      * @param $user_type
      * @return object
@@ -21,6 +22,8 @@ class Prime_model extends Model
     public static function get_file_list_for_student($class){
         try{
             return DB::table('resource')
+                ->leftJoin('users', 'resource.user_id', '=', 'users.id')
+                ->select('resource.*', 'users.first_name', 'users.last_name')
                 ->orderBy('resource_id', 'desc')
                 ->where('visibility', '=' , 1)
                 ->where('class_id','=', $class)
@@ -33,6 +36,8 @@ class Prime_model extends Model
     public static function get_file_list_for_teacher($class){
         try{
             return DB::table('resource')
+                ->leftJoin('users', 'resource.user_id', '=', 'users.id')
+                ->select('resource.*', 'users.first_name', 'users.last_name')
                 ->orderBy('resource_id', 'desc')
                 ->where('class_id','=', $class)
                 ->paginate(6);

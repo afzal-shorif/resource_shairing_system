@@ -73,4 +73,15 @@
         <!-- =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
     </div>
 </div>
-@include('layout/footer');
+<script src="{{asset('vendor/jquery/jquery-1.12.3.min.js')}}"></script>
+<script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('vendor/nano-scroller/nano-scroller.js')}}"></script>
+<!--TEMPLATE scripts-->
+<!-- ========================================================= -->
+<script src="{{asset('javascripts/template-script.min.js')}}"></script>
+<script src="{{asset('javascripts/template-init.min.js')}}"></script>
+<!-- SECTION script and examples-->
+<!-- ========================================================= -->
+</body>
+
+</html>

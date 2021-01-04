@@ -228,14 +228,7 @@
     margin-bottom: 0;
     margin-top: 10px;
 }
-.why-we-us-area {
-    padding: 120px 0;
-    background: #030d28;
-    background-image: url(../images/bg-1.png);
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
+
 .wwu h3 {
     font-size: 36px;
     font-family: "Lato";
@@ -279,7 +272,7 @@
     position: relative;
 }
 .populer-contents::after {
-    content: ;
+
     content: '';
     display: block;
     width: 10px;

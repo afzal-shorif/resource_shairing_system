@@ -1,7 +1,5 @@
 @include('layout/header')
-<style>
 
-</style>
 <header class="header-area">
     <div class="container">
         <div class="header">
@@ -31,10 +29,12 @@
                             <a class="nav-link" href="#">Contact</a>
                         </li>
                     </ul>
+                    <!--
                     <form class="d-flex me-auto search-area">
                         <input class="form-control me-2 search" type="search" placeholder="Search" aria-label="Search">
                     </form>
-                    <ul class="navbar-nav mr-auto">
+                    -->
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/user_select')}}">Log In</a>
                         </li>
@@ -245,53 +245,4 @@
         </div>
     </div>
 </section>
-
-<section class="payment text-center">
-    <img src="{{asset('images/ssl.png')}}" alt="" class="img-fluid">
-</section>
-
-
-<footer class="footer-area">
-    <div class="footer">
-        <div class="footer-top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 col-sm-4">
-                        <div class="footer-single">
-                            <h2>Logo</h2>
-                            <p>Founded in 2012 with the goal of making knowledge sharing easy, Slideshare has since grown into a top destination for professional content.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-4">
-                        <div class="footer-single">
-                            <h3>USEFUL LINKS</h3>
-                            <ul class="list-unstyled">
-                                <li><a href="#">Teachers</a></li>
-                                <li><a href="#">Latest Courses</a></li>
-                                <li><a href="#">Who we are</a></li>
-                                <li><a href="#">Support</a></li>
-                                <li><a href="#">Blog</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="footer-single">
-                            <h3>contact us</h3>
-                            <ul class="list-unstyled">
-                                <li>Phone: +88 01937766305</li>
-                                <li>Email: resourceshare@gmail.com</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END -->
-        <div class="footer-bottom text-center">
-            <p>Copyright © 2020 All Rights Reserved</p>
-        </div>
-    </div>
-</footer>
-
-
 @include('layout/footer')

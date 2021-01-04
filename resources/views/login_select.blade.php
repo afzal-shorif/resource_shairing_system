@@ -6,6 +6,10 @@
     <title>{{$title}}</title>
 
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
+
+    <script src="{{asset('sss/javascripts/jquery.min.js')}}"></script>
+    <script src="{{asset('sss/javascripts/popper.min.js')}}"></script>
+    <script src="{{asset('sss/javascripts/bootstrap.min.js')}}"></script>
 </head>
 <body>
   <style type="text/css">
@@ -74,19 +78,19 @@
       <img src="{{asset('/images/slide/1.jpeg')}}" alt="">
     </div>
     <div class="carousel-item">
-      <img src="{{asset('/images/slide/1.jpeg')}}" alt="">
+      <img src="{{asset('/images/slide/2.jpeg')}}" alt="">
     </div>
     <div class="carousel-item">
-      <img src="{{asset('/images/slide/1.jpeg')}}" alt="">
+      <img src="{{asset('/images/slide/3.jpeg')}}" alt="">
     </div>
     <div class="carousel-item ">
-      <img src="{{asset('/images/slide/1.jpeg')}}" alt="">
+      <img src="{{asset('/images/slide/4.jpeg')}}" alt="">
     </div>
     <div class="carousel-item">
-      <img src="{{asset('/images/slide/1.jpeg')}}" alt="">
+      <img src="{{asset('/images/slide/5.jpeg')}}" alt="">
     </div>
     <div class="carousel-item">
-      <img src="{{asset('/images/slide/1.jpeg')}}" alt="">
+      <img src="{{asset('/images/slide/6.jpeg')}}" alt="">
     </div>
   </div>
 
@@ -105,5 +109,7 @@
         </div>
 
     </div>
-@include('layout/footer')
+</body>
+
+</html>
 

@@ -10,7 +10,41 @@
     <link rel="stylesheet" href="{{ asset('vendor/font-awesome/css/font-awesome.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('stylesheets/css/index_style.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
 
+    <style>
+        .why-we-us-area {
+            padding: 120px 0;
+            background: #030d28;
+            background-image: url({{asset('images/bg-1.png')}});
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .row_header{
+            border: 1px solid #ddd;
+            padding-top: 8px;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+        .row_style{
+            box-shadow: 3px 3px 10px #ccc;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .class_btn{
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #fff;
+            color: #000;
+        }
+
+
+
+    </style>
 </head>
 <body>
 
@@ -59,6 +93,7 @@
                     </a>
 
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item m-auto" style="padding-right: 10px;">{{Session::get('user_name')}}</li>
                         <li class="nav-item dropdown">
                             <a class="nav-link userprofile" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="{{asset('images/user.png')}}" alt="" width="20" class="img-rounded">

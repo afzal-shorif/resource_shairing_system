@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
 use Session;
 use DB;
-
+use Carbon\Carbon;
 class Resource_model extends Model
 {
     use HasFactory;
+
 
     public static function get_user_resource($class_id){
         try{
@@ -21,7 +22,8 @@ class Resource_model extends Model
                 ->where('user_id', "=", Session::get('user_id'))
                 ->paginate(8);
         }catch (QueryException $ex){
-            die("An error occur.");
+            //dd($ex->getMessage());
+            //die("An error occur.");
         }
     }
 
@@ -38,10 +40,11 @@ class Resource_model extends Model
                     'class_id' => $file_data['class_id'],
                     'visibility' => $file_data['visibility'],
                     'price' => $file_data['price'],
-                    'type' => $file_data['type']
+                    'type' => $file_data['type'],
+                    'updated_at' => Carbon::now()
                 ]);
         }catch (QueryException $ex){
-            //dd($ex->getMessage());
+            dd($ex->getMessage());
             return false;
         }
 

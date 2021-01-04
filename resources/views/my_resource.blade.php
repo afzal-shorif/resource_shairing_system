@@ -1,17 +1,19 @@
 @include('layout/user_header')
+    <div class="container">
         <div class="row row_header">
             <div class="col">
                 <div class="dropdown">
-                    <button class="btn dropdown-toggle class_btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Class <?php echo last(request()->segments()); ?> &nbsp; &nbsp; &nbsp; &nbsp;
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                    <a class="btn dropdown-toggle class_btn" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        Class-<?php echo last(request()->segments()); ?> &nbsp; &nbsp; &nbsp; &nbsp;
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <?php
                         foreach($class as $row){
                         ?>
-                        <a class="dropdown-item" href="{{url('my_resource/'.$row->class_id)}}"><?= $row->name;?></a>
+                        <li><a class="dropdown-item" href="{{url('my_resource/'.$row->class_id)}}"><?= $row->name;?></a></li>
                         <?php } ?>
-                    </div>
+                    </ul>
                 </div>
             </div>
             <div class="col">
@@ -24,11 +26,11 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Access</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" style="border-color: #ddd;">#</th>
+                        <th scope="col" style="border-color: #ddd;">Title</th>
+                        <th scope="col" style="border-color: #ddd;">Access</th>
+                        <th scope="col" style="border-color: #ddd;">Price</th>
+                        <th scope="col" style="border-color: #ddd;">Action</th>
                     </tr>
                     </thead>
                     <tbody>

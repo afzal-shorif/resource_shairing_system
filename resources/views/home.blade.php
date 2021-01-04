@@ -61,9 +61,7 @@
                         <img src="{{asset('storage/thumbnail/'.$file->thumbnail)}}" alt="">
                         <div class="populer-contents">
                             <h3><?= $file->title; ?></h3>
-                            <!--
-                            <h5>by Author / {{$file->updated_at}}</h5>
-                            -->
+                            <h5>by {{$file->first_name.' '.$file->last_name}} / {{\Carbon\Carbon::parse($file->updated_at)->format('d M Y')}}</h5>
                             <p><?= substr($file->description, 0, 80).'...';?></p>
                             <?php
                             if((int)$file->type == 3){

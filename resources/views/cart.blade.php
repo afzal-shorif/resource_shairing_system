@@ -6,20 +6,21 @@
                 padding-bottom: 10px;
             }
         </style>
-        <div class="row" style="border: 1px solid #ddd; padding-top: 8px; padding-bottom: 5px; margin-bottom: 5px; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px;">
-            <div class="col">
-                <h5>Cart</h5>
-            </div>
+<div class="container">
+    <div class="row" style="border: 1px solid #ddd; padding-top: 8px; padding-bottom: 5px; margin-bottom: 5px; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px;">
+        <div class="col">
+            <h5>Cart</h5>
         </div>
+    </div>
     <div class="row" style="box-shadow: 3px 3px 10px #ccc; border: 1px solid #ddd; border-radius: 3px;">
         <div class="col pb-3">
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Action</th>
+                    <th scope="col" style="border-color: #ddd;">#</th>
+                    <th scope="col" style="border-color: #ddd;">Title</th>
+                    <th scope="col" style="border-color: #ddd;">Price</th>
+                    <th scope="col" style="border-color: #ddd;">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -59,5 +60,5 @@
 
         </div>
     </div>
-
-    @include('layout/footer')
+</div>
+@include('layout/footer')
