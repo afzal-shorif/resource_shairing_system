@@ -1,22 +1,50 @@
-<!-- container class div close  -->
-</div>
+<section class="payment text-center">
+    <img src="{{asset('images/ssl.png')}}" alt="" class="img-fluid">
+</section>
 
-<!--BASIC scripts-->
-<!-- ========================================================= -->
-<script src="{{ asset('vendor/jquery/jquery-1.12.3.min.js')}}"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-<script src="{{ asset('vendor/nano-scroller/nano-scroller.js')}}"></script>
-<!--TEMPLATE scripts-->
-<!-- ========================================================= -->
-<!--
-<script src="{{ asset('javascripts/template-script.min.js')}}"></script>
-<script src="{{ asset('javascripts/template-init.min.js')}}"></script>
--->
-<!-- SECTION script and examples-->
-<!-- ========================================================= -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<footer class="footer-area">
+    <div class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-4">
+                        <div class="footer-single">
+                            <h2>Logo</h2>
+                            <p>Founded in 2012 with the goal of making knowledge sharing easy, Slideshare has since grown into a top destination for professional content.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-4">
+                        <div class="footer-single">
+                            <h3>USEFUL LINKS</h3>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Teachers</a></li>
+                                <li><a href="#">Latest Courses</a></li>
+                                <li><a href="#">Who we are</a></li>
+                                <li><a href="#">Support</a></li>
+                                <li><a href="#">Blog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="footer-single">
+                            <h3>contact us</h3>
+                            <ul class="list-unstyled">
+                                <li>Phone: +88 01729-449083</li>
+                                <li>Email: resourceshare@gmail.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END -->
+        <div class="footer-bottom text-center">
+            <p>Copyright © 2020 All Rights Reserved</p>
+        </div>
+    </div>
+</footer>
+
 <script>
     function resource_type(){
         var num = document.getElementById('selected_resource').value;
@@ -41,6 +69,9 @@
     }
 
 </script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
 </body>
 </html>

@@ -58,7 +58,7 @@ class Resource extends Controller
             'book_title' => 'required|max:100|min:10',
             'book_description' => 'required|max:200|min:20',
             'book_class' => 'required|numeric',
-            'book_cover_photo' => 'required|image|max:100',
+            'book_cover_photo' => 'required|image|max:1024',
             'book_file' => 'required|mimes:pdf|max:5120'
         ]);
 
@@ -69,7 +69,7 @@ class Resource extends Controller
         $book_name = substr($request->file('book_file')->store('files'),6);
 
         Image::make(storage_path('app/public/thumbnail/'.$cover_photo_name))
-        ->resize(100, 100)
+        ->resize(330, 274)
         ->save(storage_path('app/public/thumbnail/'.$cover_photo_name));
 
         Storage::delete($cover_photo_name);
@@ -103,7 +103,7 @@ class Resource extends Controller
             'slide_title' => 'required|max:100|min:10',
             'slide_description' => 'required|max:200|min:20',
             'slide_class' => 'required|numeric',
-            'slide_cover_photo' => 'required|image|max:100',
+            'slide_cover_photo' => 'required|image|max:1024',
             'slide_file' => 'required|mimes:ppt,pptx,pdf|max:5120',
             'slide_price' => 'required|numeric|max:1000|min:10'
         ]);
@@ -113,7 +113,7 @@ class Resource extends Controller
         $book_name = substr($request->file('slide_file')->store('files'),6);
 
         Image::make(storage_path('app/public/thumbnail/'.$cover_photo_name))
-            ->resize(100, 100)
+            ->resize(330, 274)
             ->save(storage_path('app/public/thumbnail/'.$cover_photo_name));
 
         Storage::delete($cover_photo_name);
@@ -232,7 +232,7 @@ class Resource extends Controller
         // if photo exixt check validation and set p flag is true
         if ($request->hasFile('cover_photo')) {
             $request->validate([
-                'cover_photo' => 'required|image|max:100'
+                'cover_photo' => 'required|image|max:1024'
             ]);
             $p = true;
         }
@@ -252,7 +252,7 @@ class Resource extends Controller
             $cover_photo_name = substr($request->file('cover_photo')->store('public/thumbnail'), 17);
 
             Image::make(storage_path('app/public/thumbnail/'.$cover_photo_name))
-                ->resize(100, 100)
+                ->resize(330, 274)
                 ->save(storage_path('app/public/thumbnail/'.$cover_photo_name));
 
             Storage::delete($cover_photo_name);

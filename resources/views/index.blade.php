@@ -1,20 +1,13 @@
 @include('layout/header')
 <style>
-    .why-we-us-area {
-        padding: 120px 0;
-        background: #030d28;
-        background-image: url({{asset('images/bg-1.png')}});
-        background-position: right;
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
+
 </style>
 <header class="header-area">
     <div class="container">
         <div class="header">
             <nav class="navbar navbar-expand-lg">
 
-                <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('images/index_page/logo.png')}}" alt=""></a>
+                <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('images/logo.png')}}" alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -54,7 +47,7 @@
 <!-- END HEADER -->
 
 <section class="banner-area">
-    <img src="{{asset('images/index_page/slider-image-1.jpg')}}" alt="" class="img-fluid">
+    <img src="{{asset('images/slider-image-1.jpg')}}" alt="" class="img-fluid">
     <div class="container">
         <div class="banner">
             <div class="item-contents text-center">
@@ -80,17 +73,17 @@
                         <div class="col-sm-4 quick-items offset-lg-2">
                             <ul class="list-group list-group-flush justify-content-center">
                                 <li class="list-group-item">
-                                    <img src="{{asset('images/index_page/icon-1.png')}}" alt="">
+                                    <img src="{{asset('images/icon-1.png')}}" alt="">
                                     <h4>PPT Slides</h4>
                                     <p>100 courses</p>
                                 </li>
                                 <li class="list-group-item">
-                                    <img src="{{asset('images/index_page/icon-2.png')}}" alt="">
+                                    <img src="{{asset('images/icon-2.png')}}" alt="">
                                     <h4>Books</h4>
                                     <p>10000 courses</p>
                                 </li>
                                 <li class="list-group-item">
-                                    <img src="{{asset('images/index_page/icon-3.png')}}" alt="">
+                                    <img src="{{asset('images/icon-3.png')}}" alt="">
                                     <h4>Job Solutions</h4>
                                     <p>2000 courses</p>
                                 </li>
@@ -114,7 +107,7 @@
             <div class="row">
                 <div class="col">
                     <div class="single-resources">
-                        <img src="{{asset('images/index_page/img-1.png')}}" alt="" class="circle">
+                        <img src="{{asset('images/img-1.png')}}" alt="" class="circle">
                         <div class="card">
                             <div class="card-body">
                                 <h3>School</h3>
@@ -126,7 +119,7 @@
                 <!-- END -->
                 <div class="col">
                     <div class="single-resources">
-                        <img src="{{asset('images/index_page/img-2.png')}}" alt="" class="circle">
+                        <img src="{{asset('images/img-2.png')}}" alt="" class="circle">
                         <div class="card">
                             <div class="card-body">
                                 <h3>Collage</h3>
@@ -138,7 +131,7 @@
                 <!-- END -->
                 <div class="col">
                     <div class="single-resources">
-                        <img src="{{asset('images/index_page/img-3.png')}}" alt="" class="circle">
+                        <img src="{{asset('images/img-3.png')}}" alt="" class="circle">
                         <div class="card">
                             <div class="card-body">
                                 <h3>BSC/BA</h3>
@@ -150,7 +143,7 @@
                 <!-- END -->
                 <div class="col">
                     <div class="single-resources">
-                        <img src="{{asset('images/index_page/img-4.png')}}" alt="" class="circle">
+                        <img src="{{asset('images/img-4.png')}}" alt="" class="circle">
                         <div class="card">
                             <div class="card-body">
                                 <h3>MSC/MA</h3>
@@ -194,7 +187,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="single-populer clearfix">
-                        <img src="{{asset('images/index_page/populer-1.jpg')}}" alt="">
+                        <img src="{{asset('images/populer-1.jpg')}}" alt="">
                         <div class="populer-contents">
                             <h3>Artificial InteLligent</h3>
                             <h5>By hamid / 15 Jun 2020</h5>
@@ -208,7 +201,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="single-populer clearfix">
-                        <img src="{{asset('images/index_page/populer-2.jpg')}}" alt="">
+                        <img src="{{asset('images/populer-2.jpg')}}" alt="">
                         <div class="populer-contents">
                             <h3>Spoken english</h3>
                             <h5>By Munzereen shahid / 12 may 2020</h5>
@@ -222,7 +215,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="single-populer clearfix">
-                        <img src="{{asset('images/index_page/populer-3.jpg')}}" alt="">
+                        <img src="{{asset('images/populer-3.jpg')}}" alt="">
                         <div class="populer-contents">
                             <h3>HSC physics</h3>
                             <h5>By Niloy / 06 Jun 2020</h5>
@@ -236,7 +229,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="single-populer clearfix">
-                        <img src="{{asset('images/index_page/populer-4.jpg')}}" alt="">
+                        <img src="{{asset('images/populer-4.jpg')}}" alt="">
                         <div class="populer-contents">
                             <h3>Job solution</h3>
                             <h5>By Rahim / 15 July 2020</h5>
@@ -254,7 +247,7 @@
 </section>
 
 <section class="payment text-center">
-    <img src="{{asset('images/index_page/ssl.png')}}" alt="" class="img-fluid">
+    <img src="{{asset('images/ssl.png')}}" alt="" class="img-fluid">
 </section>
 
 

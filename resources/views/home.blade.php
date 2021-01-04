@@ -1,91 +1,97 @@
 @include('layout/user_header')
-    <!--
-        <a href="{{url('/cart')}}" style="float: right;">cart {{count(Session::get('cart'))}}</a>
-        <a href="{{url('/logout')}}" style="float: right; margin-left: 10px; margin-right: 10px;">Logout</a>
-        <h3 style="width: 1007px; margin: 0 auto; margin-bottom: 10px;">Available Resources:</h3>
-
-       -->
-        <style>
-
-            .list_item{
-                padding-top: 20px;
-                padding-bottom: 10px;
-            }
-        </style>
-        <div class="row" style="border: 1px solid #ddd; padding-top: 8px; padding-bottom: 5px; margin-bottom: 5px; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px;">
-            <div class="col">
-                <div class="dropdown">
-                    <button class="btn class_btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        class <?php echo last(request()->segments()); ?> &nbsp; &nbsp; &nbsp; &nbsp;
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <?php
-                        foreach($class as $row){
-                        ?>
-                        <a class="dropdown-item" href="{{url('home/'.$row->class_id)}}"><?= $row->name;?></a>
-                            <?php } ?>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col">
-                <p class="text-right" style="overflow: hidden;">
-                    <a href="{{url('/cart')}}" style="float: right;">
-                        <i class="fa fa-cart-plus" style="margin-right: 5px;"></i>{{count(Session::get('cart'))}}
-                    </a>
-                </p>
-            </div>
-
-        </div>
+        <!--
         <div class="row" style="box-shadow: 3px 3px 10px #ccc; border: 1px solid #ddd; border-radius: 3px;">
             <div class="col" style="">
                 <ul class="list-unstyled">
-                    <?php
-                        $page = 1;
-                        if(isset($_GET['page'])) $page = $_GET['page'];
 
-                        foreach ($files as $file){
-                            $type = 'Free';
-                            $button = 'Download <i class="fa fa-download"></i>';
-                            $link = '/download/'.$file->source;
+                </ul>
+            </div>
+        </div>
+    </div>
+-->
+<section class="why-we-us-area">
+    <div class="container">
+        <div class="why-we-us">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="wwu">
+                        <h3>Class-<?php echo last(request()->segments()); ?></h3>
+                        <div class="divider"></div>
+                        <p>Build your knowledge quickly from concise, well-presented content from top experts.</p>
+                        <p>Instead of scrolling through pages of text, you can flip hrough a Resource Share deck and absorb the same information in a fraction of the time.</p>
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END -->
 
-                            if((int)$file->price != 0){
-                                $type = $file->price.' Tk';
+<section class="populer-item-area">
+    <div class="container">
+        <div class="populer">
+            <div class="sc-header">
+                <h3>For Class <?php echo strtoupper($num_to_word[last(request()->segments())]); ?></h3>
+            </div>
+            <div class="row">
 
-                                if(!in_array((int)$file->resource_id, $purchase)){
-                                    $button = 'Add to Cart <i class="fa fa-cart-plus"></i>';
-                                    $link = 'add_to_cart/'.$page.'/'.$file->resource_id;
-                                }
-                            }
+                <?php
+                $page = 1;
+                if(isset($_GET['page'])) $page = $_GET['page'];
 
+                foreach ($files as $file){
+                    $type = 'Free';
+                    $button = 'Download <i class="fa fa-download"></i>';
+                    $link = '/download/'.$file->source;
+
+                    if((int)$file->price != 0){
+                        $type = $file->price.' Tk';
+
+                        if(!in_array((int)$file->resource_id, $purchase)){
+                            $button = 'Add to Cart <i class="fa fa-cart-plus"></i>';
+                            $link = 'add_to_cart/'.$page.'/'.$file->resource_id;
+                        }
+                    }
                     ?>
-                    <li class="media list_item" style="margin-bottom: 15px;">
-                        <img class="mr-3" src="{{asset('storage/thumbnail/'.$file->thumbnail)}}" alt="Image">
-                        <div class="media-body">
-                            <h5 class="mt-0 mb-1"><?= $file->title; ?> <span style="float: right;"><?= $type; ?></span></h5>
-                            <p><?= $file->description; ?></p>
+
+
+                <div class="col-md-6">
+                    <div class="single-populer clearfix">
+                        <img src="{{asset('storage/thumbnail/'.$file->thumbnail)}}" alt="">
+                        <div class="populer-contents">
+                            <h3><?= $file->title; ?></h3>
+                            <!--
+                            <h5>by Author / {{$file->updated_at}}</h5>
+                            -->
+                            <p><?= substr($file->description, 0, 80).'...';?></p>
                             <?php
-                                if((int)$file->type == 3){
-                                    echo '<a href="'.$file->source.'" target="_blank">Link</a>';
-                                }else{
+                            if((int)$file->type == 3){
+                                echo '<a href="'.$file->source.'" target="_blank">Link</a>';
+                            }else{
                             ?>
                             <a href="{{url($link)}}" style="font-size: 18px;">
                                 <?= $button; ?>
                             </a>
                             <?php } ?>
+                            <div class="populer-price">
+                                <p><?= $type; ?></p>
+                            </div>
                         </div>
-                    </li>
-                    <?php
-                        }
-                    ?>
-                </ul>
+                    </div>
+                </div>
+                <?php
+                }
+                ?>
+                <!-- END -->
             </div>
         </div>
 
-        <div class="row mt-3">
+        <div class="resource-pagination">
             <div class="col-12 d-flex justify-content-center">
                 {{ $files->links()}}
             </div>
         </div>
     </div>
+</section>
 @include('layout/footer')

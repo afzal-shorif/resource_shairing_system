@@ -21,7 +21,7 @@ class Home extends Controller
         // with pagination
         /// user_type = 2 (student)
         /// user_type = 1 (teacher)
-        ///
+
         if(Session::get('user_type')==2){
             $available_file_list = Prime_model::get_file_list_for_student($class);
         }else{
@@ -30,7 +30,14 @@ class Home extends Controller
 
         $purchase = Prime_model::get_purchase_list(Session::get('user_id'));
         $class = Prime_model::get_class();
-        return view('home', ['title'=>'Project Name :: Home', 'files'=>$available_file_list, 'purchase'=>$purchase, 'class'=> $class]);
+
+
+        $num_to_word = array("zero", "one", "two", "three", "four", "five", "six", "seven",
+                   "eight", "nine", "ten", "eleven", "twelve",);
+
+
+
+        return view('home', ['title'=>'Online Academic Resources Sharing :: Home', 'files'=>$available_file_list, 'purchase'=>$purchase, 'class'=> $class, 'num_to_word'=>$num_to_word]);
     }
 
     /**

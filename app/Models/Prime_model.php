@@ -24,7 +24,7 @@ class Prime_model extends Model
                 ->orderBy('resource_id', 'desc')
                 ->where('visibility', '=' , 1)
                 ->where('class_id','=', $class)
-                ->paginate(5);
+                ->paginate(6);
         }catch (QueryException $ex){
             //dd($ex->getMessage());
             return false;
@@ -35,7 +35,7 @@ class Prime_model extends Model
             return DB::table('resource')
                 ->orderBy('resource_id', 'desc')
                 ->where('class_id','=', $class)
-                ->paginate(5);
+                ->paginate(6);
         }catch (QueryException $ex){
             //dd($ex->getMessage());
             return false;
