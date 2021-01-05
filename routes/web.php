@@ -17,7 +17,7 @@ Route::get('/','App\Http\Controllers\Authorization@home');
 
 Route::get('/home', 'App\Http\Controllers\Home@index')->middleware('check_login');
 Route::get('/home/{class}', 'App\Http\Controllers\Home@index')->middleware('check_login');
-Route::get('/download/{filename}','App\Http\Controllers\Home@download')->middleware('check_login');
+Route::get('/download/{filename}/{resource_id}','App\Http\Controllers\Home@download')->middleware('check_login');
 Route::get('/add_to_cart/{page}/{file_id}','App\Http\Controllers\Home@add_to_cart')->middleware('check_login');
 Route::get('/cart','App\Http\Controllers\Home@cart')->middleware('check_login');
 Route::get('/remove_to_cart/{file_id}','App\Http\Controllers\Home@remove_to_cart')->middleware('check_login');
@@ -52,3 +52,5 @@ Route::post('/register_teacher', 'App\Http\Controllers\Authorization@register_te
 Route::post('/register_student', 'App\Http\Controllers\Authorization@register_student');
 
 Route::get('/user_select', 'App\Http\Controllers\Authorization@user_select');
+Route::get('/search', 'App\Http\Controllers\Resource@search');
+

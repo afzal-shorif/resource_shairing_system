@@ -84,8 +84,9 @@
                             <a class="nav-link" href="#">Contact</a>
                         </li>
                     </ul>
-                    <form class="d-flex me-auto search-area">
-                        <input class="form-control me-2 search" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex me-auto search-area" method="get" action="{{url('search')}}">
+                        {{csrf_field()}}
+                        <input class="form-control me-2 search" name="search" type="search" placeholder="Search" aria-label="Search">
                     </form>
 
                     <a href="{{url('/cart')}}" style="margin-right: auto;">

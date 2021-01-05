@@ -16,7 +16,7 @@ class Resource extends Controller
 
         $data['resources'] = Resource_model::get_user_resource($class);
         $data['class'] = Prime_model::get_class();
-        $data['title'] = 'My Resource :: Project Name';
+        $data['title'] = 'My Resource :: Online Academic Resources Sharing';
 
 
         foreach ($data['resources'] as $resource) {
@@ -48,7 +48,7 @@ class Resource extends Controller
 
 
     public function create(){
-        $data['title'] = "Create Resource :: Project Name";
+        $data['title'] = "Create Resource :: Online Academic Resources Sharing";
         $data['class'] = Prime_model::get_class();
         return view('create_resource', $data);
     }
@@ -318,6 +318,22 @@ class Resource extends Controller
         return back();
     }
 
-
+    public function search(Request $request){
+        if($request->get('search') == ""){
+            return back();
+        }
+        //search on bd
+        $files = DB::table('resource')
+            ->leftJoin('users', 'resource.user_id', '=', 'users.id')
+            ->select('resource.*', 'users.first_name', 'users.last_name')
+            ->where('title', 'like', '%'.$request->get('search').'%')
+            ->orWhere('description', 'like', '%'.$request->get('search').'%')
+            ->orderBy('resource.resource_id', 'desc')
+            ->paginate(6);
+        $class = Prime_model::get_class();
+        $purchase = Prime_model::get_purchase_list(Session::get('user_id'));
+        return view('search', ['title'=> "Search :: Online Academic Resources Sharing",
+            'files' => $files, 'class' => $class, 'purchase'=>$purchase]);
+    }
 
 }

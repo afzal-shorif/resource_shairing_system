@@ -185,62 +185,25 @@
                 <h3>Popular items</h3>
             </div>
             <div class="row">
+                @foreach($popular as $item)
                 <div class="col-md-6">
                     <div class="single-populer clearfix">
-                        <img src="{{asset('images/populer-1.jpg')}}" alt="">
+                        <img src="{{asset('storage/thumbnail/'.$item->thumbnail)}}" alt="">
                         <div class="populer-contents">
-                            <h3>Artificial InteLligent</h3>
-                            <h5>By hamid / 15 Jun 2020</h5>
-                            <p>Artificial intelligence (AI) refers to the simulation of human intelligence in machines </p>
+                            <h3>{{$item->title}}</h3>
+                            <h5>{{$item->first_name." ".$item->last_name}} / {{\Carbon\Carbon::parse($item->updated_at)->format('d M Y')}}</h5>
+                            <p>{{substr($item->description, 0, 80).'...'}}</p>
                             <a href="#">learn now</a>
                             <div class="populer-price">
-                                <p>$600</p>
+                                @if($item->price != 0)
+                                <p>{{$item->price.'Tk'}}</p>
+                                @else <p>Free</p>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="single-populer clearfix">
-                        <img src="{{asset('images/populer-2.jpg')}}" alt="">
-                        <div class="populer-contents">
-                            <h3>Spoken english</h3>
-                            <h5>By Munzereen shahid / 12 may 2020</h5>
-                            <p>Spoken English courses are designed to increase your active vocabulary</p>
-                            <a href="#">learn now</a>
-                            <div class="populer-price">
-                                <p>$200</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="single-populer clearfix">
-                        <img src="{{asset('images/populer-3.jpg')}}" alt="">
-                        <div class="populer-contents">
-                            <h3>HSC physics</h3>
-                            <h5>By Niloy / 06 Jun 2020</h5>
-                            <p>HSC Physics 1st & 2nd Paper Notes. HSC Physics Note. Physics is “knowledge, the science of nature”</p>
-                            <a href="#">learn now</a>
-                            <div class="populer-price">
-                                <p>$60</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="single-populer clearfix">
-                        <img src="{{asset('images/populer-4.jpg')}}" alt="">
-                        <div class="populer-contents">
-                            <h3>Job solution</h3>
-                            <h5>By Rahim / 15 July 2020</h5>
-                            <p>Professors Job Solution is a popular job solution guide to job seekers in Bangladesh</p>
-                            <a href="#">learn now</a>
-                            <div class="populer-price">
-                                <p>$60</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

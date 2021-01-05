@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Mail;
-
+use DB;
 class Authorization extends Controller
 {
 
@@ -33,7 +33,7 @@ class Authorization extends Controller
             return redirect('/login/student');
         }
 
-        $data['title'] = $data['header']." :: Project Name";
+        $data['title'] = "Online Academic Resources Sharing :: ".$data['header'];
 
         return view('login',$data);
 
@@ -115,7 +115,7 @@ class Authorization extends Controller
             return redirect('/register/student');
         }
 
-        $data['title'] = $data['header']." :: Project Name";
+        $data['title'] = "Online Academic Resources Sharing :: ".$data['header'];
 
         return view('register', $data);
     }
@@ -206,10 +206,17 @@ class Authorization extends Controller
     }
 
     public function home(){
-        return view('index', ['title'=> "School Resource"]);
+        $popular = DB::table('download')
+            ->leftJoin('resource', 'download.resource_id', '=', 'resource.resource_id')
+            ->leftJoin('users', 'resource.user_id', '=', 'users.id')
+            ->select('resource.*', 'users.first_name', 'users.last_name')
+            ->orderBy('download_count', 'desc')
+            #->where('resource.visibility', '=', 1)
+            ->paginate(4);
+        return view('index', ['title'=> "Online Academic Resources Sharing", 'popular' => $popular]);
     }
 
     public function user_select(){
-        return view('login_select', ['title'=> "School Resource :: Select User"]);
+        return view('login_select', ['title'=> "Online Academic Resources Sharing"]);
     }
 }

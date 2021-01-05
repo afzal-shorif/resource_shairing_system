@@ -43,7 +43,7 @@
                 foreach ($files as $file){
                     $type = 'Free';
                     $button = 'Download <i class="fa fa-download"></i>';
-                    $link = '/download/'.$file->source;
+                    $link = '/download/'.$file->source.'/'.$file->resource_id;
 
                     if((int)$file->price != 0){
                         $type = $file->price.' Tk';

@@ -7,6 +7,7 @@ use App\Models\ResourceModel;
 use Illuminate\Support\Facades\Storage;
 use Session;
 use Illuminate\Support\Facades\Mail;
+use DB;
 class Home extends Controller
 {
     // initial page after login student or teacher
@@ -21,7 +22,9 @@ class Home extends Controller
         // with pagination
         /// user_type = 2 (student)
         /// user_type = 1 (teacher)
-
+        if(!is_numeric($class)){
+            return redirect('/home/1');
+        }
         if(Session::get('user_type')==2){
             $available_file_list = Prime_model::get_file_list_for_student($class);
         }else{
@@ -47,9 +50,17 @@ class Home extends Controller
      * @return file in http protocol
      */
 
-    public function download($filename = ''){
+    public function download($filename = '', $resource_id = null){
 
         if ( file_exists( Storage::path('files/'.$filename) ) ) {
+
+
+
+            DB::table('download')
+            ->updateOrInsert(['resource_id' => $resource_id]);
+            DB::table('download')
+                ->where('resource_id', $resource_id)
+                ->increment('download_count');
             // Send Download
             return Storage::download('files/'.$filename);
         } else {
@@ -93,7 +104,7 @@ class Home extends Controller
     public function cart(){
         $data = Prime_model::get_cart_item();
         $class = Prime_model::get_class();
-        return view('cart',['title'=>'Cart','data'=>$data, 'class'=>$class]);
+        return view('cart',['title'=>'Cart :: Online Academic Resources Sharing','data'=>$data, 'class'=>$class]);
     }
 
 
@@ -125,7 +136,7 @@ class Home extends Controller
      */
     public function cart_confirm(){
         Prime_model::cart_confirm();
-        return redirect('/home');
+        return redirect('/home/1');
     }
 
 

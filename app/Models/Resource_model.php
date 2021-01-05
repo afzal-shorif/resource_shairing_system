@@ -41,7 +41,8 @@ class Resource_model extends Model
                     'visibility' => $file_data['visibility'],
                     'price' => $file_data['price'],
                     'type' => $file_data['type'],
-                    'updated_at' => Carbon::now()
+                    'updated_at' => Carbon::now(),
+                    'created_at' => Carbon::now()
                 ]);
         }catch (QueryException $ex){
             dd($ex->getMessage());
