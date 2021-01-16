@@ -31,6 +31,7 @@
                         <th scope="col" style="border-color: #ddd;">Access</th>
                         <th scope="col" style="border-color: #ddd;">Price</th>
                         <th scope="col" style="border-color: #ddd;">Action</th>
+                        <th scope="col" style="border-color: #ddd;">Download</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -52,7 +53,15 @@
                             -->
                             <a href="{{url('delete_resource?resource_id=').$row->resource_id}}"><i class="fa fa-trash"></i></a>
                         </td>
+                        <td>
+                            @if($row->download_count == null)
+                                {{0}}
+                            @else
+                            {{$row->download_count}}
+                            @endif
+                        </td>
                     </tr>
+
                     <?php
                         }
                     ?>

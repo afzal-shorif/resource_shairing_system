@@ -74,7 +74,7 @@ class Prime_model extends Model
 
     public static function get_user_id_and_type($email = ''){
         $user = DB::table('users')->where('email', $email)->first();
-        return array($user->id,$user->user_type,$user->first_name);
+        return array($user->id,$user->user_type,$user->first_name,$user->status);
     }
 
     /**

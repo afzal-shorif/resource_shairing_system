@@ -42,7 +42,9 @@ Route::post('/update/','App\Http\Controllers\Resource@update')->middleware('chec
 */
 Route::get('/login/{user_type}', 'App\Http\Controllers\Authorization@index');
 Route::get('/login', 'App\Http\Controllers\Authorization@index');
-
+/**
+ * register
+ */
 Route::get('/register', 'App\Http\Controllers\Authorization@register');
 Route::get('/register/{user_type}', 'App\Http\Controllers\Authorization@register');
 
@@ -52,5 +54,35 @@ Route::post('/register_teacher', 'App\Http\Controllers\Authorization@register_te
 Route::post('/register_student', 'App\Http\Controllers\Authorization@register_student');
 
 Route::get('/user_select', 'App\Http\Controllers\Authorization@user_select');
-Route::get('/search', 'App\Http\Controllers\Resource@search');
+
+/**
+ * search
+*/
+Route::get('/search', 'App\Http\Controllers\Resource@search')->middleware('check_login');
+
+/**
+* profile
+ */
+Route::get('/profile', 'App\Http\Controllers\Home@profile')->middleware('check_login');
+
+Route::post('/update_firstname', 'App\Http\Controllers\Home@update_firstname')->middleware('check_login');
+Route::post('/update_lastname', 'App\Http\Controllers\Home@update_lastname')->middleware('check_login');
+Route::post('/update_email', 'App\Http\Controllers\Home@update_email')->middleware('check_login');
+Route::post('/update_phone', 'App\Http\Controllers\Home@update_phone')->middleware('check_login');
+Route::post('/update_password', 'App\Http\Controllers\Home@update_password')->middleware('check_login');
+Route::post('/update_profile_picture', 'App\Http\Controllers\Home@update_picture')->middleware('check_login');
+
+/**
+ * admin
+ */
+Route::get('/dashboard', 'App\Http\Controllers\Admin@index')->middleware('admin');
+Route::get('/registered_student', 'App\Http\Controllers\Admin@registered_student')->middleware('admin');
+Route::get('/registered_teacher', 'App\Http\Controllers\Admin@registered_teacher')->middleware('admin');
+Route::get('/pending_student', 'App\Http\Controllers\Admin@pending_student')->middleware('admin');
+Route::get('/pending_teacher', 'App\Http\Controllers\Admin@pending_teacher')->middleware('admin');
+Route::get('/active_user/{type}/{id}','App\Http\Controllers\Admin@active_user')->middleware('admin');
+Route::get('/suspend_user/{type}/{id}','App\Http\Controllers\Admin@suspend_user')->middleware('admin');
+Route::get('/user_details','App\Http\Controllers\Admin@user_details')->middleware('admin');
+
+
 

@@ -18,6 +18,7 @@ class Resource extends Controller
         $data['class'] = Prime_model::get_class();
         $data['title'] = 'My Resource :: Online Academic Resources Sharing';
 
+        //return $data['resources'];
 
         foreach ($data['resources'] as $resource) {
             $url = url('/update_visibility?resource_id='.$resource->resource_id);

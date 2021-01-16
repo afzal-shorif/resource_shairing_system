@@ -25,10 +25,14 @@ class Authorization extends Controller
             $data['header'] = "Student Login";
             $data['type'] = 2;
             $data['register_url'] = url('/register/student');
-        }else if($user_type == "teacher"){
+        }else if($user_type == "teacher") {
             $data['header'] = "Teacher Login";
             $data['type'] = 1;
             $data['register_url'] = url('/register/teacher');
+        }else if($user_type == "admin"){
+            $data['header'] = "Admin Login";
+            $data['type'] = 0;
+            $data['register_url'] = "";
         }else{
             return redirect('/login/student');
         }
@@ -73,12 +77,25 @@ class Authorization extends Controller
 
             $user = Prime_model::get_user_id_and_type($user_data['email']);
 
-            $cart = array();
+            if($user[3] == 0){
+               return back()->with('error', "Your Account is not active yet.");
+            }
+            // if admin
             $request->session()->put('authorize', 'anyValue');
-            $request->session()->put('user_type', $user[1]);
+            $cart = array();
             $request->session()->put('user_name', $user[2]);
-            $request->session()->put('user_id', $user[0]);
             $request->session()->put('cart', $cart);
+
+            if($user[1] == 0){
+
+                $request->session()->put('type', 'admin');
+                $request->session()->put('user_type', 0);
+                $request->session()->put('user_id', 1);
+            }else{
+                // not admin
+                $request->session()->put('user_type', $user[1]);
+                $request->session()->put('user_id', $user[0]);
+            }
 
             return redirect('/home/1');
         }else{
@@ -219,4 +236,5 @@ class Authorization extends Controller
     public function user_select(){
         return view('login_select', ['title'=> "Online Academic Resources Sharing"]);
     }
+
 }

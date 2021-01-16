@@ -100,7 +100,10 @@
                                 <img src="{{asset('images/user.png')}}" alt="" width="20" class="img-rounded">
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="">Profile</a></li>
+                                @if(Session::get('user_type')==0)
+                                <li><a class="dropdown-item" href="{{url('/dashboard')}}">Dashboard</a></li>
+                                @endif
+                                <li><a class="dropdown-item" href="{{url('/profile')}}">Profile</a></li>
                                 <li><a class="dropdown-item" href="{{url('/my_resource/1')}}">My Resources</a></li>
                                 <li><a href="{{url('/cart')}}" class="dropdown-item">Cart {{count(Session::get('cart'))}}</a></li>
                                 <li><a class="dropdown-item" href="{{url('/logout')}}">Logout</a></li>

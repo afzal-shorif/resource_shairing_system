@@ -18,7 +18,6 @@ class LoginCheck
     public function handle(Request $request, Closure $next)
     {
         if($request->session()->has('authorize') && $request->session()->get('authorize')=='anyValue'){
-
             return $next($request);
         }else{
             //print_r( $request->session()->all());

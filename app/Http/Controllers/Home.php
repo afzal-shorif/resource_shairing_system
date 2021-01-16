@@ -1,13 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Mail\ConfirmEmail;
+
 use App\Models\Prime_model;
+use App\Models\Resource_model;
 use App\Models\ResourceModel;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\QueryException;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Storage;
 use Session;
-use Illuminate\Support\Facades\Mail;
+use Image;
 use DB;
+
 class Home extends Controller
 {
     // initial page after login student or teacher
@@ -17,12 +22,12 @@ class Home extends Controller
      * require a model to get the data from server
      * @return View
      */
-    public function index($class = 1){
+    public function index($class = null){
         // get all file list
         // with pagination
         /// user_type = 2 (student)
         /// user_type = 1 (teacher)
-        if(!is_numeric($class)){
+        if(!is_numeric($class) || $class == null){
             return redirect('/home/1');
         }
         if(Session::get('user_type')==2){
@@ -37,7 +42,6 @@ class Home extends Controller
 
         $num_to_word = array("zero", "one", "two", "three", "four", "five", "six", "seven",
                    "eight", "nine", "ten", "eleven", "twelve",);
-
 
 
         return view('home', ['title'=>'Online Academic Resources Sharing :: Home', 'files'=>$available_file_list, 'purchase'=>$purchase, 'class'=> $class, 'num_to_word'=>$num_to_word]);
@@ -55,12 +59,18 @@ class Home extends Controller
         if ( file_exists( Storage::path('files/'.$filename) ) ) {
 
 
-
+            /// initialize resource_id with 0 in download table
             DB::table('download')
             ->updateOrInsert(['resource_id' => $resource_id]);
-            DB::table('download')
-                ->where('resource_id', $resource_id)
-                ->increment('download_count');
+
+            $download = Resource_model::check_download($resource_id);
+            /// if not download yet
+            if($download<=0){
+                DB::table('download')
+                    ->where('resource_id', $resource_id)
+                    ->increment('download_count');
+            }
+            DB::table('temp')->where('user_id', Session::get('user_id'))->where('resource_id', $resource_id)->update(['flag' => 1]);
             // Send Download
             return Storage::download('files/'.$filename);
         } else {
@@ -148,6 +158,128 @@ class Home extends Controller
         Session::flush();
         return redirect('/login');
     }
+
+
+    /**
+     * profile
+     */
+    public function profile(){
+        $data['title'] = config('global.title');
+        $data['class'] = Prime_model::get_class();
+        $data['user_data'] = DB::table('users')->select('first_name','last_name','username','email', 'phone','picture')->where('id', Session::get('user_id'))->get();
+        $data['balance'] = Resource_model::get_balance();
+        return view('profile',$data);
+    }
+
+    public function update_firstname(Request $request){
+
+        $request->validate([
+            'first_name' => 'required|alpha|min:3|max:10',
+        ]);
+
+        $affected = DB::table('users')->where('id', Session::get('user_id'))->update(['first_name' => $request->get('first_name')]);
+
+        if($affected){
+            return back()->with('success', 'First Name Update Successfully.');
+        }
+        return back()->with('error', 'An Error occur. Please Try Later.');
+
+    }
+
+    public function update_lastname(Request $request){
+
+        $request->validate([
+            'last_name' => 'required|alpha|min:3|max:10',
+        ]);
+
+        $affected = DB::table('users')->where('id', Session::get('user_id'))->update(['last_name' => $request->get('last_name')]);
+
+        if($affected){
+            return back()->with('success', 'Last Name Update Successfully.');
+        }
+        return back()->with('error', 'An Error occur. Please Try Later.');
+
+    }
+
+    public function update_email(Request $request){
+
+        $request->validate([
+            'email' => 'required|email|unique:users,email',
+        ]);
+
+        $affected = DB::table('users')->where('id', Session::get('user_id'))->update(['email' => $request->get('email')]);
+
+        if($affected){
+            return back()->with('success', 'Email Update Successfully.');
+        }
+        return back()->with('error', 'An Error occur. Please Try Later.');
+
+    }
+
+    public function update_phone(Request $request){
+
+        $request->validate([
+            'phone' => 'regex:/01[1-9]([0-9]){8}/'
+        ]);
+
+        $affected = DB::table('users')->where('id', Session::get('user_id'))->update(['phone' => $request->get('phone')]);
+
+        if($affected){
+            return back()->with('success', 'Phone Number Update Successfully.');
+        }
+        return back()->with('error', 'An Error occur. Please Try Later.');
+
+    }
+
+    public function update_password(Request $request){
+
+        $request->validate([
+            'password' => 'required|confirmed|alpha_num|min:6|max:15',
+            'old_password' => 'required|alpha_num',
+        ]);
+
+
+        $user = DB::table('users')->where('id', Session::get('user_id'))->first();
+
+
+        if(Hash::check($request->get('old_password'), $user->password)){
+
+            try{
+                DB::table('users')->where('id', Session::get('user_id'))->update(['password' => Hash::make($request->get('password'))]);
+                return back()->with('success', 'Password Update Successfully.');
+            }catch (QueryException $ex){
+                return back()->with('error', 'An Error occur. Please Try Later.');
+            }
+
+        }
+
+        return back()->with('error', 'Current password does not match');
+    }
+
+    public function update_picture(Request $request){
+        $request->validate([
+            'picture' => 'required|image|max:1024'
+        ]);
+
+        $name = substr($request->file('picture')->store('public/profile'), 15);
+
+        Image::make(storage_path('app/public/profile/'.$name))
+            ->resize(140, 160)
+            ->save(storage_path('app/public/profile/'.$name));
+
+        Storage::delete($name);
+
+        $affected = DB::table('users')->where('id', Session::get('user_id'))->update(['picture' => $name]);
+        if($affected){
+            return back()->with('success', 'Profile picture update successfully.');
+        }
+
+        return back()->with('error', 'Current password does not match');
+
+
+    }
+
+
 
 
 }
