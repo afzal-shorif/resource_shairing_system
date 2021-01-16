@@ -84,5 +84,8 @@ Route::get('/active_user/{type}/{id}','App\Http\Controllers\Admin@active_user')-
 Route::get('/suspend_user/{type}/{id}','App\Http\Controllers\Admin@suspend_user')->middleware('admin');
 Route::get('/user_details','App\Http\Controllers\Admin@user_details')->middleware('admin');
 
+Route::get('/setNotificationStatus','App\Http\Controllers\Admin@setNotificationStatus')->middleware('admin');
+Route::get('/setMessageStatus','App\Http\Controllers\Admin@setMessageStatus')->middleware('admin');
+
 
 

@@ -42,15 +42,15 @@ class Admin_model extends Model
 
 
     public static function msg_count(){
-        return DB::table('message')->where('status', 1)->count();
+        return DB::table('message')->where('status', 0)->count();
     }
     public static function msg(){
-        return DB::table('message')->where('status', 1)->paginate(5);
+        return DB::table('message')->orderBy('message_id', 'desc')->paginate(5);
     }
     public static function notification_count(){
-        return DB::table('notification')->where('status', 1)->count();
+        return DB::table('notification')->where('status', 0)->count();
     }
     public static function notification(){
-        return DB::table('notification')->where('status', 1)->paginate(5);
+        return DB::table('notification')->orderBy('notification_id', 'desc')->paginate(5);
     }
 }

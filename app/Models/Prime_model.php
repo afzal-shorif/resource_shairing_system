@@ -149,5 +149,12 @@ class Prime_model extends Model
         }
     }
 
+    public static function notification($notification){
+        DB::table('notification')->insert(['notification'=> $notification, 'status' => 0]);
+    }
+    public static function message($message){
+        DB::table('message')->insert(['message'=> $message, 'status' => 0]);
+    }
+
 
 }

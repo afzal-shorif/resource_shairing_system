@@ -93,6 +93,10 @@ class Resource extends Controller
         ];
 
         if(Resource_model::upload($file_data)){
+
+            $message = Session::get('user_name')." Upload a new Book.";
+            Prime_model::message($message);
+
             return back()->with('success',"Book Upload Successful.");
         }
 
@@ -137,6 +141,8 @@ class Resource extends Controller
         ];
 
         if(Resource_model::upload($file_data)){
+            $message = Session::get('user_name')." Upload a new Slide.";
+            Prime_model::message($message);
             return back()->with('success',"Slide Upload Successful.");
         }
 
@@ -164,6 +170,8 @@ class Resource extends Controller
         ];
 
         if(Resource_model::upload($file_data)){
+            $message = Session::get('user_name')." Upload a new Link.";
+            Prime_model::message($message);
             return back()->with('success',"Link Save Successful.");
         }
 

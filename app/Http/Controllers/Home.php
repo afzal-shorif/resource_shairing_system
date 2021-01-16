@@ -146,6 +146,10 @@ class Home extends Controller
      */
     public function cart_confirm(){
         Prime_model::cart_confirm();
+
+        $message = Session::get('user_name')." is buy some resources.";
+        Prime_model::message($message);
+
         return redirect('/home/1');
     }
 

@@ -180,6 +180,9 @@ class Authorization extends Controller
 
             */
 
+            $notification = $request->get('first_name').' '.$request->get('last_name')." is registered as a Teacher.";
+
+            Prime_model::notification($notification);
             return back()->with('success', 'Account Create successfully. Please Log in..');
         }else{
             return back()->with('error', 'Something Wrong Happened. Please try later..');
@@ -215,6 +218,9 @@ class Authorization extends Controller
         $create_user = Prime_model::create_user($user_data);
 
         if($create_user){
+            $notification = $request->get('first_name').' '.$request->get('last_name')." is registered as a Student.";
+
+            Prime_model::notification($notification);
 
             return back()->with('success', 'Account Create successfully. Please Log in..');
         }else{

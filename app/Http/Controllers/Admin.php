@@ -131,4 +131,21 @@ class Admin extends Controller
         return view('admin.user', $data);
     }
 
+
+    public function setNotificationStatus(Request $request){
+
+        $update = DB::table('notification')->where('status', 0)->update(['status'=> 1]);
+        if($update)
+            return response()->json(array('msg'=> 'Success'), 200);
+        else return response()->json(array('msg'=> 'error'), 404);
+    }
+
+    public function setMessageStatus(Request $request){
+
+        $update = DB::table('message')->where('status', 0)->update(['status'=> 1]);
+        if($update)
+            return response()->json(array('msg'=> 'Success'), 200);
+        else return response()->json(array('msg'=> 'error'), 404);
+    }
+
 }
