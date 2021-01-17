@@ -160,7 +160,7 @@ class Home extends Controller
     public function logout(){
 
         Session::flush();
-        return redirect('/login');
+        return redirect('/');
     }
 
 
@@ -279,11 +279,5 @@ class Home extends Controller
         }
 
         return back()->with('error', 'Current password does not match');
-
-
     }
-
-
-
-
 }

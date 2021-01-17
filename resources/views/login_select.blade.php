@@ -57,6 +57,7 @@
                     <div class="login_btn">
                         <a class="btn btn-primary btn-block" href="{{url('/login/student')}}">Student</a>
                         <a class="btn btn-primary btn-block" href="{{url('/login/teacher')}}">Teachers</a>
+                        <a class="btn btn-primary btn-block" href="{{url('/login/admin')}}">Admin</a>
                     </div>
 
                 </div>

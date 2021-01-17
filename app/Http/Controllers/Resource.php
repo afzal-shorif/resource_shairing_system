@@ -344,5 +344,4 @@ class Resource extends Controller
         return view('search', ['title'=> "Search :: Online Academic Resources Sharing",
             'files' => $files, 'class' => $class, 'purchase'=>$purchase]);
     }
-
 }

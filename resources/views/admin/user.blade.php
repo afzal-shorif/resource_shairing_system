@@ -95,7 +95,13 @@
                                 <td>0</td>
                             @endif
                             <td>
-                                <a href="{{url('/download/'.$row->source.'/'.$row->resource_id)}}"><i class="fa fa-download"></i></a>
+                                @if($row->type == 3)
+                                    <a href="{{url($row->source)}}" target="_blank"><i class="fa fa-link"></i></a>
+                                @else
+                                    <a href="{{url('/download/'.$row->source.'/'.$row->resource_id)}}"><i class="fa fa-download"></i></a>
+                                    @endif
+
+
                                 <a href="{{url('delete_resource?resource_id='.$row->resource_id)}}"><i class="fa fa-trash" style="margin-left: 10px;"></i></a>
                             </td>
                         </tr>

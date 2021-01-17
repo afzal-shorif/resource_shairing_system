@@ -81,7 +81,7 @@ class Resource_model extends Model
             return DB::table('resource')
                 ->orderBy('resource_id', 'desc')
                 ->leftJoin('download', 'resource.resource_id', '=', 'download.resource_id')
-                ->select('resource.resource_id','title', 'visibility', 'price', 'download.download_count', 'source', 'resource.class_id','resource.created_at')
+                ->select('resource.resource_id','title', 'type' ,'visibility', 'price', 'download.download_count', 'source', 'resource.class_id','resource.created_at')
                 ->where('user_id', "=", $id)
                 ->get();
         }catch (QueryException $ex){
