@@ -60,7 +60,8 @@ class Resource extends Controller
             'book_description' => 'required|max:200|min:20',
             'book_class' => 'required|numeric',
             'book_cover_photo' => 'required|image|max:1024',
-            'book_file' => 'required|mimes:pdf|max:5120'
+            'book_file' => 'required|mimes:pdf|max:5120',
+            'book_price' => 'required|numeric|max:1000|min:10'
         ]);
 
         //$cover_photo_name = $request->file('book_cover_photo')->getClientOriginalName();
@@ -88,7 +89,7 @@ class Resource extends Controller
             'thumbnail' => $cover_photo_name,
             'class_id' => $request->get('book_class'),
             'visibility' => $visibility,
-            'price' => 0,
+            'price' => $request->get('book_price'),
             'type' => 1,
         ];
 

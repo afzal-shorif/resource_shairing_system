@@ -62,18 +62,27 @@
                             <textarea name="book_description" class="form-control" id="exampleFormControlTextarea1" rows="2">{{old('book_description')}}</textarea>
                         </div>
                     </div>
+
                     <div class="form-row">
-                        <div class="form-group col-sm-3 col-md-3 col-lg-2">
+                        <div class="form-group col-sm-4 col-md-4 col-lg-3">
                             <label for="inputState">Class</label>
                             <select name="book_class" id="inputState" class="form-control">
-                               <?php
-                                    foreach($class as $row){
+                                <?php
+                                foreach($class as $row){
                                     echo '<option value="'.$row->class_id.'">'.$row->name.'</option>';
                                 }
                                 ?>
                             </select>
                         </div>
-                        <div class="form-group col-sm-3 col-md-3 col-lg-2">
+                        <div class="form-group col-sm-4 col-md-4 col-lg-3">
+                            <label for="inputState">Price</label>
+                            <input type="number" name="book_price" class="form-control" id="inputAddress2" placeholder="Price" value="{{old('price')}}">
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-4 col-md-4 col-lg-3">
                             <label for="inputState">Cover Image</label>
                             <div class="custom-file">
 
@@ -83,7 +92,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group col-sm-3 col-md-3 col-lg-2">
+                        <div class="form-group col-sm-4 col-md-4 col-lg-3">
                             <label for="inputState">File</label>
                             <div class="custom-file">
 

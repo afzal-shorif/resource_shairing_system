@@ -143,7 +143,7 @@ class Authorization extends Controller
         $request->validate([
             'first_name' => 'required|alpha|min:3|max:10',
             'last_name' => 'required|alpha|min:3|max:10',
-            'username' => 'required|alpha|min:3|max:10|unique:users,username',
+            'username' => 'required|alpha_num|min:3|max:10|unique:users,username',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|alpha_num|min:6|max:15',
             'phone' => 'regex:/01[1-9]([0-9]){8}/'
@@ -194,10 +194,9 @@ class Authorization extends Controller
         $request->validate([
             'first_name' => 'required|alpha|min:3|max:10',
             'last_name' => 'required|alpha|min:3|max:10',
-            'username' => 'required|alpha|min:3|max:10|unique:users,username',
+            'username' => 'required|alpha_num|min:3|max:10|unique:users,username',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|confirmed|alpha_num|min:6|max:15',
-
             'phone' => 'regex:/01[1-9]([0-9]){8}/',
         ]);
 
