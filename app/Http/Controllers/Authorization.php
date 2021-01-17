@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ConfirmEmail;
 use Auth;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 use App\Models\Prime_model;
@@ -12,6 +13,8 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Mail;
 use DB;
+use function PHPUnit\Framework\isEmpty;
+
 class Authorization extends Controller
 {
 
@@ -54,11 +57,28 @@ class Authorization extends Controller
 
         $this->validate($request,
             [
-                'email' => 'required|email',
-                'password' => 'required|alphaNum|min:3',
+                'email' => 'required|string',
+                'password' => 'required|alpha_num|min:3',
                 'type' => 'required|numeric'
             ]
         );
+
+        if(!filter_var($request->get('email'), FILTER_VALIDATE_EMAIL)){
+
+            $result = DB::table('users')->where('username', $request->get('email'))->get();
+
+            $email = "";
+
+            foreach ($result as $item) {
+                $email = $item->email;
+                break;
+            }
+
+            if($email != ""){
+                $request['email'] = $email;
+            }
+
+        }
 
         $remember = $request->has('remember_me')? true : false ;
 
