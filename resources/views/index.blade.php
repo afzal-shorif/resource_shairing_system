@@ -193,7 +193,7 @@
                             <h3>{{$item->title}}</h3>
                             <h5>{{$item->first_name." ".$item->last_name}} / {{\Carbon\Carbon::parse($item->updated_at)->format('d M Y')}}</h5>
                             <p>{{substr($item->description, 0, 80).'...'}}</p>
-                            <a href="#">learn now</a>
+                            <a href="{{url('/user_select')}}">learn now</a>
                             <div class="populer-price">
                                 @if($item->price != 0)
                                 <p>{{$item->price.'Tk'}}</p>

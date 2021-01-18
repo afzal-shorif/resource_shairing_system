@@ -61,7 +61,7 @@ class Resource extends Controller
             'book_class' => 'required|numeric',
             'book_cover_photo' => 'required|image|max:1024',
             'book_file' => 'required|mimes:pdf|max:5120',
-            'book_price' => 'required|numeric|max:1000|min:10'
+            'book_price' => 'required|numeric|max:1000|min:0'
         ]);
 
         //$cover_photo_name = $request->file('book_cover_photo')->getClientOriginalName();
