@@ -60,7 +60,7 @@ class Resource extends Controller
             'book_description' => 'required|max:200|min:20',
             'book_class' => 'required|numeric',
             'book_cover_photo' => 'required|image|max:1024',
-            'book_file' => 'required|mimes:pdf|max:5120',
+            'book_file' => 'required|mimes:pdf|max:15360',
             'book_price' => 'required|numeric|max:1000|min:0'
         ]);
 
@@ -110,7 +110,7 @@ class Resource extends Controller
             'slide_description' => 'required|max:200|min:20',
             'slide_class' => 'required|numeric',
             'slide_cover_photo' => 'required|image|max:1024',
-            'slide_file' => 'required|mimes:ppt,pptx,pdf|max:5120',
+            'slide_file' => 'required|mimes:ppt,pptx,pdf|max:15360',
             'slide_price' => 'required|numeric|max:1000|min:10'
         ]);
 
