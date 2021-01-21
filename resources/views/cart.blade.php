@@ -55,7 +55,7 @@
             </table>
 
             @if(count($data)>0)
-                <a href="{{url('/cart_confirm')}}"><button class="btn" style="float: right; border: 1px solid #ddd;">Confirm</button></a>
+                <a href="{{url('/payment')}}"><button class="btn" style="float: right; border: 1px solid #ddd;">Confirm</button></a>
             @endif
 
         </div>

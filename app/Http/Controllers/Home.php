@@ -280,4 +280,12 @@ class Home extends Controller
 
         return back()->with('error', 'Current password does not match');
     }
+
+    public function payment(){
+        $data['title'] = config('global.title');
+        $data['class'] = Prime_model::get_class();
+
+        return view('payment', $data);
+    }
+
 }

@@ -23,6 +23,7 @@ Route::get('/cart','App\Http\Controllers\Home@cart')->middleware('check_login');
 Route::get('/remove_to_cart/{file_id}','App\Http\Controllers\Home@remove_to_cart')->middleware('check_login');
 Route::get('/logout','App\Http\Controllers\Home@logout')->middleware('check_login');
 Route::get('/cart_confirm','App\Http\Controllers\Home@cart_confirm')->middleware('check_login');
+Route::get('/payment','App\Http\Controllers\Home@payment')->middleware('check_login');
 /**
  * Resource
 */
