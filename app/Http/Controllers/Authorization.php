@@ -253,7 +253,7 @@ class Authorization extends Controller
             ->leftJoin('users', 'resource.user_id', '=', 'users.id')
             ->select('resource.*', 'users.first_name', 'users.last_name')
             ->orderBy('download_count', 'desc')
-            #->where('resource.visibility', '=', 1)
+            ->where('resource.visibility', '=', 1)
             ->paginate(4);
         return view('index', ['title'=> "Online Academic Resources Sharing", 'popular' => $popular]);
     }
